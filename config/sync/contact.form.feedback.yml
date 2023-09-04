@@ -1,0 +1,14 @@
+uuid: 29e3cf06-0737-49eb-b2da-15a396b87242
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - ajay.mallah@innoraft.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

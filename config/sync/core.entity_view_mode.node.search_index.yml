@@ -1,0 +1,12 @@
+uuid: a20c75fe-dfa1-4d8f-b1d6-6aa3097bcfda
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: fVFfJv_GzBRE-wpRHbfD5a3VjnhbEOXG6lvRd3uaccY
+id: node.search_index
+label: 'Search index'
+targetEntityType: node
+cache: true
