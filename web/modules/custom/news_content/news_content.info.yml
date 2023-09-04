@@ -1,0 +1,5 @@
+name: 'news_content'
+type: module
+description: 'Custom Module for the news content.'
+package: Custom
+core_version_requirement: ^10

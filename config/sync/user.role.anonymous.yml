@@ -7,6 +7,7 @@ dependencies:
   module:
     - comment
     - contact
+    - field_permissions
     - filter
     - search
     - system
@@ -22,3 +23,5 @@ permissions:
   - 'access site-wide contact form'
   - 'search content'
   - 'use text format restricted_html'
+  - 'view field_news_view_count'
+  - 'view own field_news_view_count'
