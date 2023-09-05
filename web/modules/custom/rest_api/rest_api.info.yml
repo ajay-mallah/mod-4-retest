@@ -1,0 +1,5 @@
+name: 'rest_api'
+type: module
+description: 'Rest API testing module'
+package: Custom
+core_version_requirement: ^10

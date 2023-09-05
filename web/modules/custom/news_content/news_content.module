@@ -82,21 +82,3 @@ function news_content_node_view(array &$build, EntityInterface $entity, EntityVi
 function news_content_form_node_news_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $form['title']['widget'][0]['value']['#maxlength'] = 25;
 }
-
-/**
- * Implements hook_node_presave().
- */
-function news_content_node_presave(EntityInterface $node) {
-  if ($node->bundle() == 'news') {
-    $node_title = $node->get('title')->value;
-    try {
-      $node = Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['title', $node_title]);
-      if (!$node) {
-        drupal_set_message('Node with the given title has been already created!', 'error');
-      }
-    }
-    catch (Exception $e) {
-      Drupal::logger('news_content')->warning($e->getMessage());
-    }
-  }
-}

@@ -5,9 +5,12 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.news.body
+    - field.field.node.news.field_news_featured_date
     - field.field.node.news.field_news_images
+    - field.field.node.news.field_news_publish_date
     - field.field.node.news.field_news_tags
     - field.field.node.news.field_news_view_count
+    - field.field.node.news.field_on_the_featured_list
     - node.type.news
   module:
     - text
@@ -31,6 +34,10 @@ content:
     weight: 100
     region: content
 hidden:
+  field_news_featured_date: true
   field_news_images: true
+  field_news_publish_date: true
   field_news_tags: true
   field_news_view_count: true
+  field_on_the_featured_list: true
+  published_at: true

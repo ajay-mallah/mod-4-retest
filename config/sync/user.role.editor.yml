@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.news
   module:
+    - field_permissions
     - node
     - publishcontent
 id: editor
@@ -14,8 +15,16 @@ is_admin: null
 permissions:
   - 'delete news revisions'
   - 'edit any news content'
+  - 'edit field_news_featured_date'
+  - 'edit field_on_the_featured_list'
+  - 'edit own field_news_featured_date'
+  - 'edit own field_on_the_featured_list'
   - 'publish any node type news'
   - 'publish editable node type news'
   - 'revert news revisions'
   - 'unpublish any node type news'
   - 'unpublish editable node type news'
+  - 'view field_news_featured_date'
+  - 'view field_on_the_featured_list'
+  - 'view own field_news_featured_date'
+  - 'view own field_on_the_featured_list'

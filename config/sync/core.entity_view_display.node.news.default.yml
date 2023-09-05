@@ -4,11 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_news_featured_date
     - field.field.node.news.field_news_images
+    - field.field.node.news.field_news_publish_date
     - field.field.node.news.field_news_tags
     - field.field.node.news.field_news_view_count
+    - field.field.node.news.field_on_the_featured_list
+    - image.style.large
     - node.type.news
   module:
+    - datetime
     - image
     - text
     - user
@@ -24,12 +29,21 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
+  field_news_featured_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_news_images:
     type: image
     label: above
     settings:
       image_link: ''
-      image_style: ''
+      image_style: large
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -37,7 +51,7 @@ content:
     region: content
   field_news_tags:
     type: entity_reference_label
-    label: above
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
@@ -45,7 +59,7 @@ content:
     region: content
   field_news_view_count:
     type: number_integer
-    label: above
+    label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
@@ -76,4 +90,6 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
-hidden: {  }
+hidden:
+  field_news_publish_date: true
+  field_on_the_featured_list: true

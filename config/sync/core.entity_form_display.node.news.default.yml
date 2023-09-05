@@ -4,12 +4,16 @@ status: true
 dependencies:
   config:
     - field.field.node.news.body
+    - field.field.node.news.field_news_featured_date
     - field.field.node.news.field_news_images
+    - field.field.node.news.field_news_publish_date
     - field.field.node.news.field_news_tags
     - field.field.node.news.field_news_view_count
+    - field.field.node.news.field_on_the_featured_list
     - image.style.thumbnail
     - node.type.news
   module:
+    - datetime
     - image
     - path
     - text
@@ -34,6 +38,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_news_featured_date:
+    type: datetime_default
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_news_images:
     type: image_image
     weight: 8
@@ -51,6 +61,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_on_the_featured_list:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   path:
     type: path
@@ -98,5 +115,6 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_news_publish_date: true
   field_news_view_count: true
   published_at: true
