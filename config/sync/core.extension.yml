@@ -1,6 +1,8 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  admin_toolbar: 0
+  allow_only_one: 0
   automated_cron: 0
   big_pipe: 0
   block: 0
@@ -11,11 +13,15 @@ module:
   config: 0
   contact: 0
   contextual: 0
+  custom_cron_task: 0
+  custom_secret_key: 0
   datetime: 0
   dblog: 0
+  devel_generate: 0
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_permissions: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -23,14 +29,18 @@ module:
   history: 0
   image: 0
   link: 0
+  maillog: 0
   menu_link_content: 0
   menu_ui: 0
   mysql: 0
+  news_content: 0
   node: 0
   options: 0
   page_cache: 0
   path: 0
   path_alias: 0
+  publishcontent: 0
+  rest_api: 0
   search: 0
   shortcut: 0
   system: 0
@@ -38,10 +48,15 @@ module:
   text: 0
   toolbar: 0
   tour: 0
+  unique_entity_title: 0
   update: 0
   user: 0
   views_ui: 0
+  webform: 0
+  webform_templates: 0
+  webform_ui: 0
   views: 10
+  publication_date: 99
   standard: 1000
 theme:
   olivero: 0

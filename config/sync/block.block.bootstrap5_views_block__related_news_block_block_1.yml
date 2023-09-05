@@ -1,0 +1,25 @@
+uuid: bc25500a-2918-4004-b6f4-c74cec3f4832
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.related_news_block
+  module:
+    - views
+  theme:
+    - bootstrap5
+id: bootstrap5_views_block__related_news_block_block_1
+theme: bootstrap5
+region: content
+weight: 0
+provider: null
+plugin: 'views_block:related_news_block-block_1'
+settings:
+  id: 'views_block:related_news_block-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility: {  }

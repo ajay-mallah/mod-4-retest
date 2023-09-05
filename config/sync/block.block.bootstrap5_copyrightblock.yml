@@ -1,0 +1,25 @@
+uuid: fcffb7d5-a373-4903-bb4c-58e366bce9e1
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:746ebaae-8287-4519-8e0d-42d85f382e38'
+  module:
+    - block_content
+  theme:
+    - bootstrap5
+id: bootstrap5_copyrightblock
+theme: bootstrap5
+region: footer
+weight: 0
+provider: null
+plugin: 'block_content:746ebaae-8287-4519-8e0d-42d85f382e38'
+settings:
+  id: 'block_content:746ebaae-8287-4519-8e0d-42d85f382e38'
+  label: 'Copyright block'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

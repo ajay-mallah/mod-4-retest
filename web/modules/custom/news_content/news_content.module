@@ -1,0 +1,84 @@
+<?php
+
+/**
+ * @file
+ * Primary module news_contents for news_content module.
+ */
+
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\Display\EntityViewDisplayInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements news_content_form_FORM_ID_alter().
+ */
+function news_content_form_user_login_form_alter(&$form, FormStateInterface $form_state) {
+  $form['#submit'][] = 'news_content_user_login_submit';
+}
+
+/**
+ * Form submission handler for user_login_form().
+ *
+ * Redirects the user to the dashboard after logging in.
+ */
+function news_content_user_login_submit(&$form, FormStateInterface $form_state) {
+  $editor_url = Url::fromUri("http://mod-4-retest.com/editor-dashboard");
+  $reporter_url = Url::fromUri("http://mod-4-retest.com/reporter-dashboard");
+
+  $roles = \Drupal::currentUser()->getRoles();
+  $url = NULL;
+  if (in_array("editor", $roles)) {
+    $url = $editor_url;
+  }
+  elseif (in_array("reporter", $roles)) {
+    $url = $reporter_url;
+  }
+
+  // If url is null then return.
+  if (!$url) {
+    return;
+  }
+
+  // Check if a destination was set, probably on an exception controller.
+  $request = \Drupal::service('request_stack')->getCurrentRequest();
+  if (!$request->request->has('destination')) {
+    $form_state->setRedirectUrl($url);
+  }
+  else {
+    $request->query->set('destination', $request->request->get('destination'));
+  }
+}
+
+/**
+ * Implements news_content_node_view().
+ */
+function news_content_node_view(array &$build, EntityInterface $entity, EntityViewDisplayInterface $display, $view_mode) {
+  $current_user = \Drupal::currentUser();
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() === "news" && $current_user->isAnonymous()) {
+    $nid = $entity->id();
+    try {
+      $node = Node::load($nid);
+      $current_view_count = $node->get('field_news_view_count')->value;
+      $node->set('field_news_view_count', $current_view_count + 1);
+      $node->save();
+      // Invalidating cache tag.
+      $cache_tags = [
+        'node:' . $nid,
+      ];
+      Cache::invalidateTags($cache_tags);
+    }
+    catch (Exception $e) {
+      Drupal::logger('news_content')->warning($e->getMessage());
+    }
+  }
+}
+
+/**
+ * Implements news_content_form_FORM_ID_alter().
+ */
+function news_content_form_node_news_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['title']['widget'][0]['value']['#maxlength'] = 25;
+}

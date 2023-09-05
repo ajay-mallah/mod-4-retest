@@ -1,0 +1,5 @@
+name: 'custom_cron_task'
+type: module
+description: 'Custom Cron task'
+package: Custom
+core_version_requirement: ^10

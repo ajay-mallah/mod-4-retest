@@ -4,9 +4,11 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - filter.format.webform_default
   module:
     - comment
     - contact
+    - field_permissions
     - file
     - filter
     - search
@@ -28,3 +30,6 @@ permissions:
   - 'search content'
   - 'skip comment approval'
   - 'use text format basic_html'
+  - 'use text format webform_default'
+  - 'view field_news_view_count'
+  - 'view own field_news_view_count'

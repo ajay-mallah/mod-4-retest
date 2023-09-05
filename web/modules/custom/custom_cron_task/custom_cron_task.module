@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for custom_cron_task module.
+ */
+
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Database\Database;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\Entity\Node;
+
+/**
+ * Implements hook_cron() for automatically delete old blogs.
+ */
+function custom_cron_task_cron() {
+  try {
+    $entityTypeManager = Drupal::service('entity_type.manager');
+    $query = $entityTypeManager->getStorage('node')->getQuery()->accessCheck(TRUE);
+    $nodes = $query->condition('type', 'news')
+      ->condition('field_news_featured_date', strtotime('-1 second'), '<=')
+      ->execute();
+    $nodes = $entityTypeManager->getStorage('node')->loadMultiple(array_values($nodes));
+  }
+  catch (Exception $e) {
+    Drupal::logger('custom_cron_task')->warning($e->getMessage());
+  }
+  foreach ($nodes as $node) {
+    $node->set('field_on_the_featured_list', FALSE);
+    $node->save();
+    Cache::invalidateTags(["node:" . $node->id()]);
+  }
+  Drupal::messenger()->addMessage(t("node removed from featured list successfully"));
+}

@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * Primary module custom_cron_task.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function custom_cron_task_schema() {
+  $schema['custom_cron_task'] = [
+    'description' => 'Table storing news data.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for student',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'feature_enabled' => [
+        'description' => 'Feature state enabled or disabled',
+        'type' => 'int',
+        'pgsql_type' => 'boolean',
+        'not null' => TRUE,
+        'default' => TRUE,
+      ],
+      'node_id' => [
+        'description' => 'Feature state enabled or disabled',
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}

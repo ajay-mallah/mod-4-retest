@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Primary module news_contents for news_content module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function news_content_schema() {
+  $schema['news_content'] = [
+    'description' => 'Table storing news data.',
+    'fields' => [
+      'id' => [
+        'description' => 'The primary identifier for student',
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+      ],
+      'feature_enabled' => [
+        'description' => 'Feature state enabled or disabled',
+        'type' => 'int',
+        'pgsql_type' => 'boolean',
+        'not null' => TRUE,
+        'default' => TRUE,
+      ],
+      'publish_enabled' => [
+        'description' => 'publish state enabled or disabled',
+        'type' => 'int',
+        'pgsql_type' => 'boolean',
+        'not null' => TRUE,
+        'default' => TRUE,
+      ],
+    ],
+    'primary key' => ['id'],
+  ];
+  return $schema;
+}
